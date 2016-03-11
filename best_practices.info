@@ -1,0 +1,9 @@
+name = Best practices
+description = Plugable best practices validator.
+core = 7.x
+php = 5.4
+
+package = best_practices
+registry_autoload[] = PSR-4
+
+dependencies[] = plug
