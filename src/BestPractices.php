@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\best_practices\PracticeBase
+ * Contains \Drupal\best_practices\BestPractices
  */
 
 namespace Drupal\best_practices;
@@ -25,7 +25,7 @@ class BestPractices {
    * @param $id
    *   The plugin ID.
    *
-   * @return array
+   * @return PracticeBase
    *   The plugin information.
    */
   static public function getPlugin($id) {

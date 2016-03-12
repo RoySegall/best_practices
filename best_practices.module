@@ -4,3 +4,7 @@
  * @file
  * best_practices.module
  */
+
+if (file_exists(drupal_get_path('module', 'best_practices') . '/src/vendor/autoload.php')) {
+  require_once 'src/vendor/autoload.php';
+}
