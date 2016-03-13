@@ -7,8 +7,8 @@
 
 namespace Drupal\best_practices\Plugin\practice;
 
+use Drupal\best_practices\BestPracticesException;
 use Drupal\best_practices\PracticeBase;
-use VerbalExpressions\PHPVerbalExpressions\VerbalExpressions;
 
 /**
  * @Practice(
@@ -40,6 +40,7 @@ class Fonts extends PracticeBase {
    *
    * @param $content
    *   The CSS content.
+   * @throws BestPracticesException
    */
   protected function checkFonts($content) {
     if (!preg_match('/@font-face {(.|\n)*}/', $content)) {
@@ -47,10 +48,13 @@ class Fonts extends PracticeBase {
       return;
     }
 
-    if (preg_match('url\(.*.(eot|woff|ttf|svg).\)', $content)) {
-      return;
-    }
+    $fonts_types = ['eot', 'woff', 'ttf', 'svg'];
 
+    foreach ($fonts_types as $type) {
+      if (preg_match('/url\(.*.' . $type . '.\)/', $content) === 0) {
+        throw new BestPracticesException(format_string('It seems that your font declaration did not contain @type format.', ['@type' => $type]));
+      }
+    }
   }
 
   /**
