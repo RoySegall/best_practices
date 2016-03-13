@@ -42,6 +42,15 @@ class Fonts extends PracticeBase {
    *   The CSS content.
    */
   protected function checkFonts($content) {
+    if (!preg_match('/@font-face {(.|\n)*}/', $content)) {
+      // No custom font declaration.
+      return;
+    }
+
+    if (preg_match('url\(.*.(eot|woff|ttf|svg).\)', $content)) {
+      return;
+    }
+
   }
 
   /**
