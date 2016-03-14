@@ -10,7 +10,7 @@ use Drupal\best_practices\BestPracticesException;
 /**
  * Helper test class with some added functions for testing.
  */
-class checkTheme extends DrupalWebTestCase {
+class validateTheme extends DrupalWebTestCase {
 
   /**
    * {@inheritdoc}
