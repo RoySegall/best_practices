@@ -1,0 +1,5 @@
+name = Best practices test
+description = Test module for the best practices modules
+hidden = true
+core = 7.x
+dependencies[] = best_practices

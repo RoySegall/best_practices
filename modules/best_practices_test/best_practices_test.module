@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * best_practices_test.module
+ */
+
+/**
+ * Implements hook_system_theme_info().
+ */
+function best_practices_test_system_theme_info() {
+  $themes['best_practices_valid_theme'] = drupal_get_path('module', 'best_practices_test') . '/themes/best_practices_valid_theme/best_practices_valid_theme.info';
+  $themes['best_practices_invalid_theme'] = drupal_get_path('module', 'best_practices_test') . '/themes/best_practices_invalid_theme/best_practices_invalid_theme.info';
+  return $themes;
+}
+

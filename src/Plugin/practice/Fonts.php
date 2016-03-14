@@ -23,15 +23,13 @@ class Fonts extends PracticeBase {
    * {@inheritdoc}
    */
   public function validate() {
-    $theme = variable_get('theme_default');
-    $path = drupal_get_path('theme', $theme);
-    $info_path = $path . '/' . $theme . '.info';
-    $info = drupal_parse_info_file($info_path);
-
-    $stylesheets = self::arrayFlatten($info['stylesheets']);
+    $theme_name = variable_get('theme_default');
+    $themes = list_themes();
+    $theme = $themes[$theme_name];
+    $stylesheets = self::arrayFlatten($theme->stylesheets);
 
     foreach ($stylesheets as $stylesheet_path) {
-      $this->checkFonts(file_get_contents($path . '/' . $stylesheet_path));
+      $this->checkFonts(file_get_contents($stylesheet_path));
     }
   }
 

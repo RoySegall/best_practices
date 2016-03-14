@@ -1,0 +1,5 @@
+name = Best practices invalid theme
+description = Dummy invalid theme.
+core = 7.x
+stylesheets[all][] = css/style.css
+hidden = true

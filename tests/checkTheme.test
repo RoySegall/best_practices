@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Checking theme validation.
+ */
+use Drupal\best_practices\BestPractices;
+use Drupal\best_practices\BestPracticesException;
+
+/**
+ * Helper test class with some added functions for testing.
+ */
+class checkTheme extends DrupalWebTestCase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Best practices theme',
+      'description' => 'Test the library info handlers',
+      'group' => 'Best practices',
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp($modules = array()) {
+    parent::setUp(['best_practices_test']);
+  }
+
+  /**
+   * Validating the theme.
+   */
+  public function testValidateTheme() {
+    variable_set('theme_default', 'best_practices_valid_theme');
+
+    $plugin = BestPractices::instantiatePlugin('fonts');
+    $plugin->validate();
+    $this->pass('The theme best_practices_valid_theme is valid.');
+
+    variable_set('theme_default', 'best_practices_invalid_theme');
+
+    try {
+      $plugin->validate();
+      $this->fail('The theme best_practices_invalid_theme should be invalid and an exception was not thrown.');
+    } catch (BestPracticesException $exception) {
+      $this->pass('The theme best_practices_invalid_theme is invalid and an exception was thrown.');
+    }
+  }
+
+}

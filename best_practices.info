@@ -7,3 +7,6 @@ package = best_practices
 registry_autoload[] = PSR-4
 
 dependencies[] = plug
+
+; Tests
+files[] = tests/checkTheme.test
