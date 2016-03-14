@@ -2,7 +2,6 @@ language: php
 sudo: false
 
 php:
-  - 5.4
   - 5.5
   - 5.6
 
@@ -43,8 +42,8 @@ before_script:
   # Gettin the moudles.
   - drush dl plug registry_autoload
 
-  # Enaabling the modules.
-  - drush --yes pm-enable best_practices
+  # Enabling the modules.
+  - drush --yes pm-enable plug registry_autoload best_practices
 
   # start a web server on port 8080, run in the background; wait for initialization
   - drush runserver 127.0.0.1:8080 > ~/php-server.log 2>&1 &
