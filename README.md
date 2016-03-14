@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/RoySegall/best_practices.svg?branch=7.x-1.x)](https://travis-ci.org/RoySegall/best_practices)
+[![Build Status](https://api.travis-ci.org/RoySegall/best_practices.svg)](https://travis-ci.org/RoySegall/best_practices)
